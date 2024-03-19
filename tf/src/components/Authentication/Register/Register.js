@@ -1,20 +1,37 @@
 // Register.js
-import React from 'react';
+import React, { useContext, useState } from 'react';
+import { useAuth } from '../AuthenticationContext';
 
-const Register = () => {
-    const handleRegister = () => {
-        // Your register logic here
+function Register() {
+    const { register } = useAuth();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleRegister = async (e) => {
+        e.preventDefault();
+        // Perform register logic
+        await register(email, password);
     };
 
     return (
         <div>
             <h2>Register</h2>
             <form onSubmit={handleRegister}>
-                {/* Form fields for registration */}
+                <input
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+                <input
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
                 <button type="submit">Register</button>
             </form>
         </div>
     );
-};
-
+}
 export default Register;

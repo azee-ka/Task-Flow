@@ -1,21 +1,38 @@
 // Login.js
-import React, { useContext } from 'react';
-import { AuthContext } from '../AuthenticationContext';
+import React, { useContext, useState } from 'react';
+import { useAuth } from '../AuthenticationContext';
 
-const Login = () => {
-    const { login } = useContext(AuthContext);
+function Login() {
+    const { login } = useAuth();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
-    const handleLogin = () => {
-        // Your login logic here
-        login({ username: 'example', password: 'password' });
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        // Perform login logic
+        await login(email, password);
     };
 
     return (
         <div>
             <h2>Login</h2>
-            <button onClick={handleLogin}>Login</button>
+            <form onSubmit={handleLogin}>
+                <input
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+                <input
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+                <button type="submit">Login</button>
+            </form>
         </div>
     );
-};
+}
 
 export default Login;

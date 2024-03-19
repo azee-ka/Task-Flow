@@ -1,15 +1,28 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './NavigationBar.css';
-
-const navItems = [
-    { label: 'Dashboard', path: '/dashboard' },
-    { label: 'Tasks', path: '/tasks' },
-    { label: 'Profile', path: '/profile' },
-    // Add more items as needed
-];
+import { useAuth } from '../Authentication/AuthenticationContext';
 
 function NavigationBar() {
+    const { isLoggedIn, logout } = useAuth();
+    const navigate = useNavigate();
+    const privatePages = [
+        { label: 'Dashboard', path: '/dashboard' },
+        { label: 'Tasks', path: '/tasks' },
+        { label: 'Profile', path: '/profile' },
+    ];
+    const publicPages = [
+        { label: 'Login', path: '/login' },
+        { label: 'Register', path: '/register' },
+    ];
+
+    const navItems = isLoggedIn ? privatePages : publicPages;
+
+    const handleLogout = () => {
+        logout();
+        navigate('/login');
+    };
+    console.log(navItems);
     return (
         <nav className="navigation-bar">
             <div className="navigation-bar-inner">
@@ -20,6 +33,11 @@ function NavigationBar() {
                             <Link to={item.path}>{item.label}</Link>
                         </li>
                     ))}
+                    {isLoggedIn && (
+                        <li>
+                            <button onClick={handleLogout}>Logout</button>
+                        </li>
+                    )}
                 </ul>
             </div>
         </nav>

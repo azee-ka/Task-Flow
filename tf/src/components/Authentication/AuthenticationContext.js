@@ -1,35 +1,34 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useContext } from 'react';
 
-const initialAuthState = {
-    isLoggedIn: false,
-    user: null,
-    login: () => {},
-    logout: () => {}
-};
+// Create the AuthContext
+const AuthContext = createContext();
 
-const AuthContext = createContext(initialAuthState);
-
-const AuthProvider = ({ children }) => {
+// Create the AuthProvider component
+export const AuthProvider = ({ children }) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [user, setUser] = useState(null);
 
-    const login = (userData) => {
-        // Perform login logic
-        setUser(userData);
+    const login = () => {
+        // Perform login logic here
         setIsLoggedIn(true);
     };
 
     const logout = () => {
-        // Perform logout logic
-        setUser(null);
+        // Perform logout logic here
         setIsLoggedIn(false);
     };
 
     return (
-        <AuthContext.Provider value={{ isLoggedIn, user, login, logout }}>
+        <AuthContext.Provider value={{ isLoggedIn, login, logout }}>
             {children}
         </AuthContext.Provider>
     );
 };
 
-export { AuthContext, AuthProvider };
+// Custom hook to use the AuthContext
+export const useAuth = () => {
+    const context = useContext(AuthContext);
+    if (!context) {
+        throw new Error('useAuth must be used within an AuthProvider');
+    }
+    return context;
+};
