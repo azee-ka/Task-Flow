@@ -1,0 +1,91 @@
+.dashboard-container {
+    width: 100%;
+    height: 100%;
+    /* background-color: #000000; */
+    color: #ffffff; /* White text */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.dashboard-content {
+    width: 100%;
+    max-width: 1200px; /* Set a max width for the content */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 20px;
+}
+
+.dashboard-header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.dashboard-header h1 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.dashboard-header button {
+    background-color: #6a00ff; /* Purplish glow */
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dashboard-header button:hover {
+    background-color: #4d00e6; /* Darker purplish glow on hover */
+}
+
+.task-card {
+    background-color: rgba(38, 118, 111, 0.121); 
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(152, 152, 152, 0.1);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 200px;
+    backdrop-filter: blur(500px);
+    border: 1px solid rgba(128, 128, 128, 0.077);
+}
+
+.task-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(152, 152, 152, 0.1); /* Add a slightly stronger shadow on hover */
+}
+
+.task-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.task-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.task-description {
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: #bdc3c7;
+}
+
+.task-status {
+    font-size: 12px;
+    color: #f39c12;
+}
