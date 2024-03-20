@@ -31,7 +31,7 @@ function NavigationBar() {
     return (
         <nav className="navigation-bar">
             <div className="navigation-bar-inner">
-                <h1>Task Portal</h1>
+                <h1>TaskFlow</h1>
                 <ul>
                     {navItems.map((item, index) => (
                         <li key={index}>
@@ -39,9 +39,7 @@ function NavigationBar() {
                         </li>
                     ))}
                     {isAuthenticated && (
-                        <li>
-                            <button onClick={handleLogout}>Logout</button>
-                        </li>
+                        <button onClick={handleLogout}>Sign Out</button>
                     )}
                 </ul>
             </div>

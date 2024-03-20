@@ -1,5 +1,5 @@
 .navigation-bar {
-    background-color: #000000;
+    background-color: #00000017;
     color: white;
     height: 80px;
     width: 100%;
@@ -35,17 +35,20 @@
 
 .navigation-bar h1 {
     font-size: 23px;
+    font-weight: 100;
 }
 
 .navigation-bar ul {
     display: flex;
+    justify-content: center;
+    align-items: center;
     list-style-type: none;
 }
 
 .navigation-bar ul li {
     margin-right: 1rem;
     cursor: pointer;
-    font-weight: bold;
+    /* font-weight: bold; */
     transition: transform 0.2s;
 }
 
@@ -64,4 +67,22 @@
     background-color: #007bff; /* Blue color, adjust as needed */
     width: 0;
     transition: width 0.3s; /* Transition for smooth width change */
+}
+
+
+.navigation-bar ul button {
+    background-color: #03948a00;
+    color: #ffffff;
+    border: none;
+    padding: 13px 18px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border: 1px solid gray;
+}
+
+.navigation-bar ul button:hover {
+    background-color: #4d00e6;
+    border: 1px solid rgba(128, 128, 128, 0);
 }

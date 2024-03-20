@@ -5,10 +5,12 @@ import API_BASE_URL from '../Authentication/utils/apiConfig';
 import config from '../Authentication/utils/config';
 import GetConfig from '../Authentication/utils/config';
 import { useAuthState } from '../Authentication/utils/AuthProvider';
+import TaskForm from '../TaskForm/TaskForm';
 
 const Dashboard = () => {
     const { token } = useAuthState();
     const [tasks, setTasks] = useState([]);
+    const [showTaskForm, setShowTaskForm] = useState(false);
 
     const fetchTasks = async () => {
         try {
@@ -25,12 +27,13 @@ const Dashboard = () => {
         fetchTasks();
     }, []);
 
-    const handleCreateTask = async () => {
+    const handleCreateTaskSubmit = async (title, description, completed, started) => {
         try {
             const newTaskData = {
-                title: 'New Task',
-                description: 'Description of the new task',
-                completed: false
+                title: title,
+                description: description,
+                completed: completed,
+                started: started,
             };
 
             const config = GetConfig(token);
@@ -40,6 +43,14 @@ const Dashboard = () => {
         } catch (error) {
             console.error('Failed to create task', error);
         }
+    };
+
+    const handleCreateTask = async () => {
+        setShowTaskForm(true); // Show the task form overlay
+    };
+
+    const handleCloseTaskForm = () => {
+        setShowTaskForm(false); // Close the task form overlay
     };
 
     return (
@@ -53,10 +64,11 @@ const Dashboard = () => {
                     <div key={task.id} className="task-card">
                         <h3 className="task-title">{task.title}</h3>
                         <p className="task-description">{task.description}</p>
-                        <p className="task-status">{task.completed ? 'Completed' : 'Pending'}</p>
+                        <p className="task-status">{task.completed ? task.completed ? 'Completed' : 'Pending' : 'Not Started'}</p>
                     </div>
                 ))}
             </div>
+            {showTaskForm && <TaskForm onClose={handleCloseTaskForm} handleCreateTaskSubmit={handleCreateTaskSubmit}/>} {/* Render the task form overlay */}
         </div>
     );
 };
