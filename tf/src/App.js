@@ -6,8 +6,8 @@ import NavigationBar from './components/NavigationBar/NavigationBar';
 import Login from './components/Authentication/Login/Login';
 import Register from './components/Authentication/Register/Register';
 
-import Dashboard from './components/Dashboard/Dashboard';
 import TaskList from './components/TaskList/TaskList';
+import Dashboard from './components/Dashboard/Dashboard';
 import Profile from './components/Profile/Profile';
 
 const privateRoutes = [

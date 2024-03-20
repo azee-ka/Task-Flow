@@ -30,7 +30,7 @@ function Register() {
             password,
         }
         try {
-            const response = await axios.post(`${API_BASE_URL}/api/register/`, data, config);
+            await axios.post(`${API_BASE_URL}/api/register/`, data, config);
             // Automatically login the user after successful registration
             await login(username, password);
             navigate('/dashboard');

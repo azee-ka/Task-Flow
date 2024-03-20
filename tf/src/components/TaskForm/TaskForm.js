@@ -21,30 +21,32 @@ const TaskForm = ({ onClose, handleCreateTaskSubmit }) => {
     return (
         <div className="task-form-overlay" onClick={onClose}>
             <div className="task-form" onClick={(e) => e.stopPropagation()}>
+                <button className="close-button" onClick={onClose}>
+                    <FontAwesomeIcon icon={faTimes} />
+                </button>
                 <div className="task-form-header">
                     <h2>Create New Task</h2>
                 </div>
-                <button className="close-button" onClick={onClose}>
-                        <FontAwesomeIcon icon={faTimes} />
-                    </button>
                 <form onSubmit={handleSubmit}>
-                    <label htmlFor="title">Title:</label>
-                    <input
-                        type="text"
-                        id="title"
-                        placeholder='Title'
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                        required
-                    />
-                    <label htmlFor="description">Description:</label>
-                    <textarea
-                        id="description"
-                        placeholder='Description'
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                        required
-                    ></textarea>
+                    <div className='task-form-title-field'>
+                        <textarea
+                            id='titleTextarea'
+                            placeholder='Title'
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                        />
+                        <label htmlFor='titleTextarea'>Title</label>
+                    </div>
+                    <div className='task-form-description-field'>
+                        <textarea
+                            id='descriptionTextarea'
+                            placeholder='Description'
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
+                            required
+                        ></textarea>
+                        <label htmlFor='descriptionTextarea'>Description</label>
+                    </div>
                     <button type="submit">Submit</button>
                 </form>
             </div>

@@ -13,14 +13,22 @@
 }
 
 .task-form {
-    background-color: #171717; /* Dark background color */
+    background-color: rgb(23, 23, 23); /* Dark background color */
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Soft shadow effect */
     max-width: 500px;
     height: 500px;
     width: 100%;
-    color: #ffffff; /* Text color */
+    color: #ffffff;
+}
+
+.task-form form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 10px;
+    background-color: rgba(255, 255, 255, 0);
 }
 
 .task-form h2 {
@@ -28,30 +36,80 @@
     margin-bottom: 20px;
 }
 
-.task-form label {
-    font-size: 16px;
-    margin-bottom: 5px;
-    display: block; /* Ensure labels are displayed on new lines */
-}
 
-.task-form input,
 .task-form textarea {
     width: 100%;
-    max-width: 460px;
-    padding: 10px;
+    max-width: 475px;
     margin-bottom: 10px;
-    border: 1px solid #34dbd3; /* Blue border color */
-    border-radius: 5px;
-    background-color: #345e5b42; /* Dark background color for inputs */
-    color: #ffffff; /* Text color */
-    font-size: 15px;
+    background-color: #00b3a700;
+    color: #ffffff; 
     resize: none;
+    padding: 13px;
+    font-size: 18px;
+    border: none;
+    line-height: 25px;
+    border: 1px solid gray;
+    border-radius: 8px;
 }
-.task-form textarea {
+.task-form textarea:hover {
+    border: 1px solid white;
+}
+
+.task-form textarea:focus {
+    outline: none;
+    border: 1px solid #00bdc0;
+}
+
+.task-form-description-field textarea {
     min-height: 100px;
     max-height: 300px;
     height: fit-content;
 }
+
+.task-form-description-field,
+.task-form-title-field {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.task-form-description-field label, 
+.task-form-title-field label {
+    position: absolute;
+    top: 13px;
+    left: 10px;
+    transition: 0.3s;
+    pointer-events: none;
+    color: #888;
+    background-color: rgb(23, 23, 23);
+    padding: 2px;
+    font-size: 18px;
+}
+
+.task-form-description-field textarea:focus+label,
+.task-form-description-field textarea:not(:placeholder-shown)+label,
+.task-form-title-field textarea:focus+label,
+.task-form-title-field textarea:not(:placeholder-shown)+label {
+    top: -13px;
+    font-size: 13px;
+    color: #00bdc0;
+}
+
+.task-form-title-field textarea {
+    width: 100%;
+    padding: 13px;
+    font-size: 18px;
+    height: 25px;
+}
+.task-form-description-field textarea {
+    width: 100%;
+    padding: 13px;
+    font-size: 18px;
+    height: 120px;
+}
+
 
 .task-form form button {
     background-color: #6b46c1; /* Purple button color */
@@ -62,11 +120,11 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    width: 100%; /* Button spans full width of form */
+    width: 100%; 
 }
 
 .task-form form button:hover {
-    background-color: #5935a1; /* Darker purple on hover */
+    background-color: #5935a1; 
 }
 
 .close-button {
