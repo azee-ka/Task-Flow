@@ -12,14 +12,14 @@ const authReducer = (state, action) => {
         case actionTypes.LOGIN_SUCCESS:
             return {
                 ...state,
-                isLoggedIn: true,
+                isAuthenticated: true,
                 user: action.payload.user,
                 token: action.payload.token,
             };
         case actionTypes.LOGOUT:
             return {
                 ...state,
-                isLoggedIn: false,
+                isAuthenticated: false,
                 user: null,
                 token: null,
             };
@@ -45,7 +45,6 @@ export const AuthProvider = ({ children }) => {
 
         try {
             const response = await axios.post(`${API_BASE_URL}/api/login/`, data, config);
-            console.log(response.data);
             const { token } = response.data;
             dispatch({ type: actionTypes.LOGIN_SUCCESS, payload: { user: { username }, token } });
         } catch (error) {
@@ -63,7 +62,7 @@ export const AuthProvider = ({ children }) => {
 
     return (
         <AuthStateContext.Provider value={state}>
-            <AuthDispatchContext.Provider value={{ isLoggedIn: state.isLoggedIn, login, logout }}>
+            <AuthDispatchContext.Provider value={{ isAuthenticated: state.isAuthenticated, login, logout }}>
                 {children}
             </AuthDispatchContext.Provider>
         </AuthStateContext.Provider>

@@ -22,13 +22,13 @@ const publicRoutes = [
 ];
 
 const App = () => {
-  const { isLoggedIn } = useAuthDispatch();
+  const { isAuthenticated } = useAuthDispatch();
   return (
-    <div className={`App ${isLoggedIn ? 'private' : ''}`}>
+    <div className={`App ${isAuthenticated ? 'private' : ''}`}>
       <Router>
         <NavigationBar />
         <Routes>
-          {isLoggedIn ? (
+          {isAuthenticated ? (
             privateRoutes.map((route, index) => (
               <Route key={index} {...route} />
             ))

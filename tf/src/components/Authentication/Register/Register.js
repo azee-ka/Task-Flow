@@ -31,7 +31,6 @@ function Register() {
         }
         try {
             const response = await axios.post(`${API_BASE_URL}/api/register/`, data, config);
-            console.log(response);
             // Automatically login the user after successful registration
             await login(username, password);
             navigate('/dashboard');

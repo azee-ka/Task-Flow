@@ -1,6 +1,6 @@
 // authReducer.js
 export const initialState = {
-    isLoggedIn: false,
+    isAuthenticated: false,
     user: null,
     token: null,
   };
@@ -15,14 +15,14 @@ export const initialState = {
       case actionTypes.LOGIN_SUCCESS:
         return {
           ...state,
-          isLoggedIn: true,
+          isAuthenticated: true,
           user: action.payload.user,
           token: action.payload.token,
         };
       case actionTypes.LOGOUT:
         return {
           ...state,
-          isLoggedIn: false,
+          isAuthenticated: false,
           user: null,
           token: null,
         };

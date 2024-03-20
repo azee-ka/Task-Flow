@@ -4,7 +4,7 @@ import './NavigationBar.css';
 import { useAuthDispatch } from '../Authentication/utils/AuthProvider';
 
 function NavigationBar() {
-    const { isLoggedIn, logout } = useAuthDispatch();
+    const { isAuthenticated, logout } = useAuthDispatch();
     const navigate = useNavigate();
     const privatePages = [
         { label: 'Dashboard', path: '/dashboard' },
@@ -16,7 +16,7 @@ function NavigationBar() {
         { label: 'Register', path: '/register' },
     ];
 
-    const navItems = isLoggedIn ? privatePages : publicPages;
+    const navItems = isAuthenticated ? privatePages : publicPages;
     const [isLoading, setIsLoading] = useState(false);
 
     const handleLogout = () => {
@@ -38,7 +38,7 @@ function NavigationBar() {
                             <Link to={item.path}>{item.label}</Link>
                         </li>
                     ))}
-                    {isLoggedIn && (
+                    {isAuthenticated && (
                         <li>
                             <button onClick={handleLogout}>Logout</button>
                         </li>
