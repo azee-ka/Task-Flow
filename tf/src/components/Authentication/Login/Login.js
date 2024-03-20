@@ -1,17 +1,20 @@
 // Login.js
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { useAuthDispatch } from '../utils/AuthProvider';
 import './Login.css';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Login() {
+    const navigate = useNavigate();
     const { login } = useAuthDispatch();
-    const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
     const handleLogin = async (e) => {
         e.preventDefault();
         // Perform login logic
-        await login(email, password);
+        await login(username, password);
+        navigate('/dashboard');
     };
 
     return (
@@ -21,10 +24,10 @@ function Login() {
                 <form onSubmit={handleLogin}>
                     <input
                         className='login-form-input'
-                        type="email"
-                        placeholder="Email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        type="text"
+                        placeholder="Username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
                     />
                     <input
                         className='login-form-input'
@@ -33,6 +36,9 @@ function Login() {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
+                    <div className='redirect-to-register'>
+                        <Link to={`/register`} >Don't have an account?</Link>
+                    </div>
                     <button className='login-form-button' type="submit">Login</button>
                 </form>
             </div>

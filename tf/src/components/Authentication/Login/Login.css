@@ -23,7 +23,7 @@
     font-weight: bold;
 }
 
-.login-form input[type="email"],
+.login-form input[type="text"],
 .login-form input[type="password"] {
     margin: 10px 0;
     padding: 15px;
@@ -53,4 +53,14 @@
 
 .login-form button:hover {
     background-color: #27ae60;
+}
+
+.redirect-to-register {
+    width: 100%;
+    text-align: left;
+    font-size: 14px;
+}
+.redirect-to-register a {
+    color: #bfbfbf; /* Set the text color to white */
+    text-decoration: none; /* Remove the underline */
 }

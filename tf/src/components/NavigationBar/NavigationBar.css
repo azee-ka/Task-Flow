@@ -57,3 +57,11 @@
     color: white;
     text-decoration: none;
 }
+
+
+.loading-bar {
+    height: 4px;
+    background-color: #007bff; /* Blue color, adjust as needed */
+    width: 0;
+    transition: width 0.3s; /* Transition for smooth width change */
+}

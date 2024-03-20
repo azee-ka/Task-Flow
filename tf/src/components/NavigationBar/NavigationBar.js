@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './NavigationBar.css';
 import { useAuthDispatch } from '../Authentication/utils/AuthProvider';
@@ -17,12 +17,17 @@ function NavigationBar() {
     ];
 
     const navItems = isLoggedIn ? privatePages : publicPages;
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleLogout = () => {
         logout();
-        navigate('/login');
+        setIsLoading(true);
+        setTimeout(() => {
+            navigate('/login');
+            setIsLoading(false);
+        }, 500);
     };
-    console.log(navItems);
+
     return (
         <nav className="navigation-bar">
             <div className="navigation-bar-inner">
@@ -40,6 +45,7 @@ function NavigationBar() {
                     )}
                 </ul>
             </div>
+            {isLoading && <div className="loading-bar"></div>}
         </nav>
     );
 }

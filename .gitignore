@@ -1,1 +1,13 @@
 api/db.sqlite3
+api/.env
+api/.zshrc
+api/runserver.sh
+api/migrate.sh
+
+
+# Ignore all __pycache__ folders
+**/__pycache__/
+*.pyc
+
+# Ignore all migrations folders
+**/migrations/
