@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './NavigationBar.css';
-import { useAuth } from '../Authentication/AuthenticationContext';
+import { useAuthState } from '../Authentication/utils/AuthProvider';
 
 function NavigationBar() {
     const { isLoggedIn, logout } = useAuth();

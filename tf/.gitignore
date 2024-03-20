@@ -32,6 +32,8 @@ __pycache__/
 local_settings.py
 
 # Ignore database files
+/api/api/db.sqlite3/
+
 db.sqlite3
 
 # Ignore static files
