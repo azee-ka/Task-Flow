@@ -1,16 +1,16 @@
 // Register.js
 import React, { useContext, useState } from 'react';
-import { useAuth } from '../AuthenticationContext';
+import { useAuthDispatch } from '../utils/AuthProvider';
 
 function Register() {
-    const { register } = useAuth();
+    const { login } = useAuthDispatch();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const handleRegister = async (e) => {
         e.preventDefault();
         // Perform register logic
-        await register(email, password);
+        // await register(email, password);
     };
 
     return (

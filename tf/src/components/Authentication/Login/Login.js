@@ -1,10 +1,10 @@
 // Login.js
 import React, { useContext, useState } from 'react';
-import { useAuth } from '../AuthenticationContext';
+import { useAuthDispatch } from '../utils/AuthProvider';
 import './Login.css';
 
 function Login() {
-    const { login } = useAuth();
+    const { login } = useAuthDispatch();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 

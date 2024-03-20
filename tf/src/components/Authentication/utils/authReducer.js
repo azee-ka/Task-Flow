@@ -2,6 +2,7 @@
 export const initialState = {
     isLoggedIn: false,
     user: null,
+    token: null,
   };
   
   export const actionTypes = {
@@ -16,12 +17,14 @@ export const initialState = {
           ...state,
           isLoggedIn: true,
           user: action.payload.user,
+          token: action.payload.token,
         };
       case actionTypes.LOGOUT:
         return {
           ...state,
           isLoggedIn: false,
           user: null,
+          token: null,
         };
       default:
         return state;

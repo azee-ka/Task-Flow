@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import { useAuth } from './components/Authentication/AuthenticationContext';
+import { useAuthDispatch } from './components/Authentication/utils/AuthProvider';
 import './App.css';
 import NavigationBar from './components/NavigationBar/NavigationBar';
 import Login from './components/Authentication/Login/Login';
@@ -22,7 +22,7 @@ const publicRoutes = [
 ];
 
 const App = () => {
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn } = useAuthDispatch();
   return (
     <div className={`App ${isLoggedIn ? 'private' : ''}`}>
       <Router>

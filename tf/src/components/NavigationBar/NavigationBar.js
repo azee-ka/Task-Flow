@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './NavigationBar.css';
-import { useAuthState } from '../Authentication/utils/AuthProvider';
+import { useAuthDispatch } from '../Authentication/utils/AuthProvider';
 
 function NavigationBar() {
-    const { isLoggedIn, logout } = useAuth();
+    const { isLoggedIn, logout } = useAuthDispatch();
     const navigate = useNavigate();
     const privatePages = [
         { label: 'Dashboard', path: '/dashboard' },

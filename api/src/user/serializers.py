@@ -1,20 +1,13 @@
-from django.contrib.auth.models import User, Group
-from rest_framework import serializers, viewsets
+from rest_framework import serializers
+from django.db import models
+from .models import BaseUser
 
-class UserSerializer(serializers.ModelSerializer):
+class BaseUserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User
-        fields = ['url', 'username', 'email', 'groups']
+        model = BaseUser
+        fields = ['id', 'username', 'email', 'first_name', 'last_name', 'display_name', 'date_of_birth', 'date_joined', 'is_active', 'profile_picture', 'is_private_profile']
 
-class GroupSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Group
-        fields = ['url', 'name']
 
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-
-class GroupViewSet(viewsets.ModelViewSet):
-    queryset = Group.objects.all()
-    serializer_class = GroupSerializer
+class UserProfilePictureUpdateSerializer(serializers.Serializer):
+    profile_picture = serializers.ImageField()
+    
