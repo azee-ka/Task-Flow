@@ -12,3 +12,4 @@ class BaseUser(AbstractUser):
     profile_picture = models.ImageField(upload_to='profile_pictures/', blank=True, null=True)
     active_profile = models.ForeignKey('self', null=True, blank=True, on_delete=models.SET_NULL, related_name='%(app_label)s_%(class)s_active_profile')
     is_private_profile = models.BooleanField(default=True)
+    sort_option = models.CharField(max_length=20, default='created_at')
