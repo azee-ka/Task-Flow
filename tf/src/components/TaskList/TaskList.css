@@ -105,6 +105,15 @@
     align-items: center;
 }
 
+.dashboard-content .task-created-at {
+    font-size: 10px;
+    color: gray;
+}
+.dashboard-content .task-updated-at {
+    font-size: 10px;
+    color: gray;
+}
+
 .dashboard-content .task-title {
     font-size: 18px;
     font-weight: bold;
@@ -167,6 +176,14 @@
     color: #f39c12;
 }
 
+.dashboard-content-list .task-created-at {
+    font-size: 12px;
+    color: gray;
+}
+.dashboard-content-list .task-updated-at {
+    font-size: 12px;
+    color: gray;
+}
 
 
 

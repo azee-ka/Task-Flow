@@ -8,6 +8,7 @@ import GetConfig from '../Authentication/utils/config';
 import { useAuthState } from '../Authentication/utils/AuthProvider';
 import TaskForm from '../TaskForm/TaskForm';
 import App from '../../App';
+import { formatDate, timeAgo } from '../../utils/formatDate';
 
 const TaskList = () => {
     const { token } = useAuthState();
@@ -96,7 +97,7 @@ const TaskList = () => {
         }
     };
 
-
+    console.log(tasks);
     return (
         <div className="dashboard-container" onClick={() => setShowDropdown(false)} >
             <div className='dashboard-container-header'>
@@ -126,9 +127,11 @@ const TaskList = () => {
                 </div>
                 {tasks.map(task => (
                     <div key={task.id} className={isGridView ? `task-card` : 'task-list'}>
+                        <p className='task-updated-at'>Last Updated {formatDate(task.created_at)}<br/>{timeAgo(task.created_at)}</p>
                         <h3 className="task-title">{task.title}</h3>
-                        <p className="task-description">{task.description.length <= 100 ? task.description : task.description.substr(0, 100) + '...'}</p>
+                        <p className="task-description">{task.description.length <= 25 ? task.description : task.description.substr(0, 25) + '...'}</p>
                         <p className="task-status">{task.started ? task.completed ? 'Completed' : 'Pending' : 'Not Started'}</p>
+                        <p className='task-created-at'>Created {formatDate(task.created_at)}<br/>{timeAgo(task.updated_at)}</p>
                     </div>
                 ))}
             </div>
