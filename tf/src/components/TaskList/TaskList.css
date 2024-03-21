@@ -11,7 +11,7 @@
     overflow-y: auto;
     gap: 15px;
     position: relative;
-    z-index: 1;
+    z-index: 0;
 }
 
 .task-list-container-header {

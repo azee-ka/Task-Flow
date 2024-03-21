@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './NavigationBar.css';
 import { useAuthDispatch } from '../Authentication/utils/AuthProvider';
+import Sidebar from '../sidebar/Sidebar';
 
 function NavigationBar() {
     const { isAuthenticated, logout } = useAuthDispatch();
@@ -55,6 +56,7 @@ function NavigationBar() {
                 </div>
             </div>
             {isLoading && <div className="loading-bar"></div>}
+            {<Sidebar isOpen={menuOpen} />}
         </nav>
     );
 }
