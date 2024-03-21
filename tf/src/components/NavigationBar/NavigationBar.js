@@ -6,6 +6,8 @@ import { useAuthDispatch } from '../Authentication/utils/AuthProvider';
 function NavigationBar() {
     const { isAuthenticated, logout } = useAuthDispatch();
     const navigate = useNavigate();
+    const [menuOpen, setMenuOpen] = useState(false);
+
     const privatePages = [
         { label: 'Dashboard', path: '/dashboard' },
         { label: 'Tasks', path: '/tasks' },
@@ -31,17 +33,26 @@ function NavigationBar() {
     return (
         <nav className="navigation-bar">
             <div className="navigation-bar-inner">
-                <h1>TaskFlow</h1>
-                <ul>
-                    {navItems.map((item, index) => (
-                        <li key={index}>
-                            <Link to={item.path}>{item.label}</Link>
-                        </li>
-                    ))}
-                    {isAuthenticated && (
-                        <button onClick={handleLogout}>Sign Out</button>
-                    )}
-                </ul>
+                <div className='navigation-side-menubar'>
+                    <div className="menu-icon" onClick={() => setMenuOpen(!menuOpen)}>
+                        <div className={`menu-line ${menuOpen ? 'open' : ''}`}></div>
+                        <div className={`menu-line ${menuOpen ? 'open' : ''}`}></div>
+                        <div className={`menu-line ${menuOpen ? 'open' : ''}`}></div>
+                    </div>
+                </div>
+                <div className='navigation-bar-header'>
+                    <h1>TaskFlow</h1>
+                    <ul>
+                        {navItems.map((item, index) => (
+                            <li key={index}>
+                                <Link to={item.path}>{item.label}</Link>
+                            </li>
+                        ))}
+                        {isAuthenticated && (
+                            <button onClick={handleLogout}>Sign Out</button>
+                        )}
+                    </ul>
+                </div>
             </div>
             {isLoading && <div className="loading-bar"></div>}
         </nav>
