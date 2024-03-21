@@ -1,4 +1,4 @@
-.dashboard-container {
+.task-list-container {
     width: 100%;
     height: 100%;
     color: #ffffff;
@@ -14,7 +14,7 @@
     z-index: 1;
 }
 
-.dashboard-container-header {
+.task-list-container-header {
     background-color: rgba(135, 159, 155, 0.095); 
     min-width: 50px;
     width: fit-content;
@@ -40,7 +40,7 @@
     cursor: pointer;
 }
 
-.dashboard-content {
+.task-list-content {
     position: relative;    
     width: 100%;
     max-width: 1200px;
@@ -49,7 +49,7 @@
     grid-gap: 20px;
 }
 
-.dashboard-content .dashboard-header {
+.task-list-content .task-list-header {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -59,12 +59,12 @@
     background-color: rgba(255, 255, 255, 0);
 }
 
-.dashboard-header h1 {
+.task-list-header h1 {
     font-size: 24px;
     font-weight: bold;
 }
 
-.dashboard-header button {
+.task-list-header button {
     background-color: #6a00ff; /* Purplish glow */
     color: #ffffff;
     border: none;
@@ -75,17 +75,17 @@
     transition: background-color 0.3s ease;
 }
 
-.dashboard-header button:hover {
+.task-list-header button:hover {
     background-color: #4d00e6;
 }
 
-.dashboard-content .task-card {
+.task-list-content .task-card {
     /* background-color: rgba(11, 159, 146, 0.111);  */
     background-color: rgba(135, 159, 155, 0.095); 
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 4px 6px rgba(152, 152, 152, 0.1);
-    transition: transform 0.3s ease;
+    transition: 0.3s ease;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -95,38 +95,38 @@
     z-index: 0 !important;
 }
 
-.dashboard-content .task-card:hover {
+.task-list-content .task-card:hover {
     transform: scale(1.05);
 }
 
-.dashboard-content .task-content {
+.task-list-content .task-content {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.dashboard-content .task-created-at {
+.task-list-content .task-created-at {
     font-size: 10px;
     color: gray;
 }
-.dashboard-content .task-updated-at {
+.task-list-content .task-updated-at {
     font-size: 10px;
     color: gray;
 }
 
-.dashboard-content .task-title {
+.task-list-content .task-title {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 5px;
 }
 
-.dashboard-content .task-description {
+.task-list-content .task-description {
     font-size: 14px;
     margin-bottom: 10px;
     color: #bdc3c7;
 }
 
-.dashboard-content .task-status {
+.task-list-content .task-status {
     font-size: 12px;
     color: #f39c12;
 }
@@ -137,7 +137,7 @@
 
 
 
-.dashboard-content-list {
+.task-list-content-list {
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
@@ -145,10 +145,10 @@
     border-radius: 8px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
 }
 
-.dashboard-content-list .task-list {
+.task-list-content-list .task-list {
     border-bottom: 0px solid #ccc;
     padding: 0px;
     padding-left: 10px;
@@ -157,30 +157,35 @@
     background-color: rgba(135, 159, 155, 0.095); 
     border: 1px solid rgba(128, 128, 128, 0.077);
     border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(152, 152, 152, 0.1);
+    transition: 0.3s ease;
+}
+.task-list-content-list .task-list:hover {
+    transform: scale(1.02);
 }
 
-.dashboard-content-list .task-list .task-title {
+.task-list-content-list .task-list .task-title {
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 5px;
 }
 
-.dashboard-content-list .task-list .task-description {
+.task-list-content-list .task-list .task-description {
     font-size: 14px;
     margin-bottom: 10px;
     color: #bdc3c7;
 }
 
-.dashboard-content-list .task-list .task-status {
+.task-list-content-list .task-list .task-status {
     font-size: 12px;
     color: #f39c12;
 }
 
-.dashboard-content-list .task-created-at {
+.task-list-content-list .task-created-at {
     font-size: 12px;
     color: gray;
 }
-.dashboard-content-list .task-updated-at {
+.task-list-content-list .task-updated-at {
     font-size: 12px;
     color: gray;
 }
@@ -205,11 +210,11 @@
     z-index: 3;
     background-color: rgba(135, 159, 155, 0.095); 
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    min-width: 180px;
+    min-width: 200px;
     border-radius: 5px;
     padding: 10px 2px;
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(128, 128, 128, 0.087);
+    backdrop-filter: blur(50px);
+    border: 1px solid rgba(128, 128, 128, 0.43);
     gap: 2px;
 }
 

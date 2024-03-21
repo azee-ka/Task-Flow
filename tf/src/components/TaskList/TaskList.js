@@ -99,8 +99,8 @@ const TaskList = () => {
 
     console.log(tasks);
     return (
-        <div className="dashboard-container" onClick={() => setShowDropdown(false)} >
-            <div className='dashboard-container-header'>
+        <div className="task-list-container" onClick={() => setShowDropdown(false)} >
+            <div className='task-list-container-header'>
                 <FontAwesomeIcon
                     icon={isGridView ? faList : faTh}
                     onClick={toggleView}
@@ -120,18 +120,18 @@ const TaskList = () => {
                     )}
                 </div>
             </div>
-            <div className={`dashboard-content${isGridView ? '' : '-list'}`}>
-                <div className="dashboard-header">
+            <div className={`task-list-content${isGridView ? '' : '-list'}`}>
+                <div className="task-list-header">
                     <h1>Tasks</h1>
                     <button onClick={handleCreateTask}>Create Task</button>
                 </div>
                 {tasks.map(task => (
                     <div key={task.id} className={isGridView ? `task-card` : 'task-list'}>
-                        <p className='task-updated-at'>Last Updated {formatDate(task.created_at)}<br/>{timeAgo(task.created_at)}</p>
+                        {task.created_at === task.updated_at && <p className='task-updated-at'>Last Updated {formatDate(task.created_at)}<br/>{timeAgo(task.created_at)}</p>}
                         <h3 className="task-title">{task.title}</h3>
                         <p className="task-description">{task.description.length <= 25 ? task.description : task.description.substr(0, 25) + '...'}</p>
                         <p className="task-status">{task.started ? task.completed ? 'Completed' : 'Pending' : 'Not Started'}</p>
-                        <p className='task-created-at'>Created {formatDate(task.created_at)}<br/>{timeAgo(task.updated_at)}</p>
+                        <p className='task-created-at'>Created {formatDate(task.updated_at)}<br/>{timeAgo(task.updated_at)}</p>
                     </div>
                 ))}
             </div>
