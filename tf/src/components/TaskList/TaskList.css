@@ -132,11 +132,22 @@
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .dashboard-content-list .task-list {
-    border-bottom: 1px solid #ccc;
-    padding: 10px 0;
+    border-bottom: 0px solid #ccc;
+    padding: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+    backdrop-filter: blur(100px);
+    background-color: rgba(135, 159, 155, 0.095); 
+    border: 1px solid rgba(128, 128, 128, 0.077);
+    border-radius: 10px;
 }
 
 .dashboard-content-list .task-list .task-title {
@@ -147,13 +158,13 @@
 
 .dashboard-content-list .task-list .task-description {
     font-size: 14px;
-    color: #666;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    color: #bdc3c7;
 }
 
 .dashboard-content-list .task-list .task-status {
     font-size: 12px;
-    color: #999;
+    color: #f39c12;
 }
 
 
@@ -180,7 +191,7 @@
     min-width: 180px;
     border-radius: 5px;
     padding: 10px 2px;
-    backdrop-filter: blur(100px);
+    backdrop-filter: blur(20px);
     border: 1px solid rgba(128, 128, 128, 0.087);
     gap: 2px;
 }

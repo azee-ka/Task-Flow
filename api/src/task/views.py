@@ -28,6 +28,24 @@ def update_sort_option(request):
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
+def update_view_mode(request):
+    user = request.user
+    is_grid_view_str = request.query_params.get('is_grid_view')  # Extract from query parameters
+    is_grid_view = is_grid_view_str.lower() == 'true'  # Convert to boolean
+    user.is_grid_view = is_grid_view
+    user.save()
+    return Response({'message': 'View mode updated successfully.'}, status=status.HTTP_200_OK)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_is_grid_view(request):
+    user = request.user
+    return Response({'is_grid_view': user.is_grid_view})
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
 def create_task(request):
     serializer = TaskSerializer(data=request.data, context={'request': request})
     if serializer.is_valid():

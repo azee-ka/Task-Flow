@@ -7,6 +7,7 @@ import API_BASE_URL from '../Authentication/utils/apiConfig';
 import GetConfig from '../Authentication/utils/config';
 import { useAuthState } from '../Authentication/utils/AuthProvider';
 import TaskForm from '../TaskForm/TaskForm';
+import App from '../../App';
 
 const TaskList = () => {
     const { token } = useAuthState();
@@ -29,6 +30,20 @@ const TaskList = () => {
     useEffect(() => {
         fetchTasks();
     }, []); // Refetch tasks when sort option changes
+
+    useEffect(() => {
+        // Fetch user's preferred view from the backend
+        const fetchPreferredView = async () => {
+            try {
+                const response = await axios.get(`${API_BASE_URL}/api/get-is-grid-view/`, config);
+                setIsGridView(response.data.is_grid_view);
+            } catch (error) {
+                console.error('Failed to fetch preferred view', error);
+            }
+        };
+
+        fetchPreferredView();
+    }, []);
 
     const handleCreateTaskSubmit = async (title, description, completed, started) => {
         try {
@@ -53,8 +68,18 @@ const TaskList = () => {
         setShowTaskForm(false);
     };
 
+    const updatePreferredView = async () => {
+        try {
+            const response = await axios.post(`${API_BASE_URL}/api/update-view-mode/?is_grid_view=${!isGridView}`, null, config);
+        } catch (error) {
+            console.error('Failed to update preferred view', error);
+        }
+    };
+    
+
     const toggleView = () => {
         setIsGridView((prev) => !prev);
+        updatePreferredView();
     };
 
     useEffect(() => {
@@ -103,7 +128,7 @@ const TaskList = () => {
                     <div key={task.id} className={isGridView ? `task-card` : 'task-list'}>
                         <h3 className="task-title">{task.title}</h3>
                         <p className="task-description">{task.description.length <= 100 ? task.description : task.description.substr(0, 100) + '...'}</p>
-                        <p className="task-status">{task.completed ? 'Completed' : 'Not Completed'}</p>
+                        <p className="task-status">{task.started ? task.completed ? 'Completed' : 'Pending' : 'Not Started'}</p>
                     </div>
                 ))}
             </div>
