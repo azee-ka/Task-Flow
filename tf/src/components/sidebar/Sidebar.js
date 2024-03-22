@@ -4,11 +4,11 @@ import './Sidebar.css';
 
 function Sidebar({ isOpen, onClose }) {
     const [options] = useState([
-        { id: 1, label: 'Tasks', path: '/tasks' },
-        { id: 1, label: 'Add Task', path: '/add-task' },
-        { id: 2, label: 'Calendar', path: '/calendar' },
-        { id: 3, label: 'Categories', path: '/categories' },
-        { id: 4, label: 'Settings', path: '/settings' }
+        { label: 'Tasks', path: '/tasks' },
+        { label: 'Add Task', path: '/add-task' },
+        { label: 'Calendar', path: '/calendar' },
+        { label: 'Categories', path: '/categories' },
+        { label: 'Settings', path: '/settings' }
     ]);
 
     return (
@@ -16,8 +16,8 @@ function Sidebar({ isOpen, onClose }) {
             <div className='sidebar-container-content'>
                 <div className='sidebar-container-content-inner'>
                     <div className='sidebar-menu'>
-                        {options.map(option => (
-                            <li key={option.id} className='sidebar-menu-item'>
+                        {options.map((option, index) => (
+                            <li key={`${index}-${option.label}`} className='sidebar-menu-item'>
                                 <div>
                                     <Link to={option.path} className='sidebar-menu-link' onClick={onClose}>
                                         {option.label}

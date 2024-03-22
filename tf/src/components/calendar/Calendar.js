@@ -3,8 +3,8 @@ import './Calendar.css';
 import { generateMonthlyCalendar } from './monthly.js';
 import { generateYearlyCalendar } from './yearly.js';
 import { generateWeeklyCalendar } from './weekly.js';
-
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 function getWeek(date) {
   const firstDayOfYear = new Date(date.getFullYear(), 0, 1);
@@ -99,28 +99,11 @@ function Calendar() {
               <h2>Year {date.toLocaleDateString('en-US', { year: 'numeric' })}</h2>
             </>
           )}
-
           <div className='calendar-buttons'>
-
-            {viewType === 'monthly' && (
-              <>
-                <button onClick={prevMonth}>&lt;</button>
-                <button onClick={nextMonth}>&gt;</button>
-              </>
-            )}
-            {viewType === 'weekly' && (
-              <>
-                <button onClick={prevWeek}>&lt;</button>
-                <button onClick={nextWeek}>&gt;</button>
-
-              </>
-            )}
-            {viewType === 'yearly' && (
-              <>
-                <button onClick={prevYear}>&lt;</button>
-                <button onClick={nextYear}>&gt;</button>
-              </>
-            )}
+            <>
+              <button onClick={viewType === 'monthly' ? prevMonth : viewType === 'weekly' ? prevWeek : prevYear}><FontAwesomeIcon icon={faChevronLeft} /></button>
+              <button onClick={viewType === 'monthly' ? nextMonth : viewType === 'weekly' ? nextWeek : nextYear}><FontAwesomeIcon icon={faChevronRight} /></button>
+            </>
           </div>
         </div>
         {calendarCells}

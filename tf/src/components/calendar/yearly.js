@@ -43,8 +43,8 @@ export function generateYearlyCalendar(date) {
             <th colSpan="7">{monthName}</th>
           </tr>
           <tr>
-            {weekdays.map((weekday) => (
-              <th key={`weekday-${weekday}`} className="weekday-cell">{weekday}</th>
+            {weekdays.map((weekday, index) => (
+              <th key={`weekday-${weekday}-${index}`} className="weekday-cell">{weekday}</th>
             ))}
           </tr>
         </thead>
@@ -64,12 +64,16 @@ export function generateYearlyCalendar(date) {
     } else {
       rows.push(<tr key={`row-${index / 4}`}>{cells}</tr>);
       cells = [];
-      cells.push(<td key={`month-${index}`}>{month}</td>);
+      cells.push(<td key={`month--${index}`}>{month}</td>);
     }
     if (index === months.length - 1) {
-      rows.push(<tr key={`row-${index / 4 + 1}`}>{cells}</tr>);
+      rows.push(<tr key={`row--${index / 4 + 1}`}>{cells}</tr>);
     }
   });
 
-  return <table className="yearly-calendar">{rows}</table>;
+  return <table className="yearly-calendar">
+    <thead>
+      {rows}
+    </thead>
+  </table>;
 }

@@ -22,7 +22,7 @@ export function generateWeeklyCalendar(date) {
         const isToday = weekDay.toDateString() === today.toDateString();
 
         return (
-          <div key={day} className="weekly-calendar-cell-day">
+          <div key={`${day}-${index}`} className="weekly-calendar-cell-day">
             <div>{day}</div>
             <div className={`weekly-calendar-cell-date ${isToday ? 'today' : ''}`}>
               {weekDay.getDate()}
@@ -31,7 +31,7 @@ export function generateWeeklyCalendar(date) {
         );
       })}
       {[...Array(7)].map((_, i) => (
-        <div key={i} className="weekly-calendar-cell-content"></div>
+        <div key={i + i} className="weekly-calendar-cell-content"></div>
       ))}
     </div>
   );

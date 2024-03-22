@@ -43,7 +43,7 @@ export function generateMonthlyCalendar(date) {
   return (
     <div className="calendar-grid-monthly">
       {daysOfWeek.map((day, index) => (
-        <div key={day} className="monthly-calendar-cell-day">
+        <div key={`${day}-${index}`} className="monthly-calendar-cell-day">
           <div>{day}</div>
         </div>
       ))}
@@ -54,11 +54,11 @@ export function generateMonthlyCalendar(date) {
         const dayNumber = date ? date.getDate() : '';
         const yearDayNumber = date ? Math.ceil((date - new Date(date.getFullYear(), 0, 1)) / (1000 * 60 * 60 * 24)) + 1 : '';
         return (
-          <div key={date ? date.getDay().toString() : index} className={`calendar-cell-date ${isPreviousMonth ? 'previous-month' : ''} ${isNextMonth ? 'next-month' : ''}`}>
+          <div key={`${date ? date.getDay().toString() : index}-${index}`} className={`calendar-cell-date ${isPreviousMonth ? 'previous-month' : ''} ${isNextMonth ? 'next-month' : ''}`}>
             {date && (
               <>
-                <div className={`${isToday ? 'today' : ''}`}>{dayNumber}</div>
                 <div className="year-day-number" style={{ opacity: '0.6' }}>{yearDayNumber}</div>
+                <div className={`${isToday ? 'today' : ''}`}>{dayNumber}</div>
               </>
             )}
           </div>
