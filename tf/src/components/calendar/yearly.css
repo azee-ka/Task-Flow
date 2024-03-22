@@ -1,44 +1,47 @@
 .yearly-calendar {
-    width: 100%;
-    border-collapse: collapse !important;
-    border-collapse: initial;
-  }
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Adjust the number of columns as needed */
+  gap: 20px; /* Gap between months */
+}
 
-  .yearly-month-table {
-    width: 100%;
-    padding: 10px;
-    border-spacing: 0px;
-    border: 1px solid gray;
-  }
-  
-  
-  .yearly-month-table th {
-    text-align: center;
-    color: white;
-    padding: 10px;
-  }
-  
-  .weekday-cell {
-    text-align: center;
-    padding: 10px;
-  }
-  
-  td {
-    text-align: center;
-    /* padding: 10px; */
-    /* border: 1px solid #ddd; */
-    padding-top: 10px;
-    color: white;
-  }
-  
-  .empty-cell {
-    background-color: transparent;
-  }
-  
+.month {
+  padding: 10px;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
 
-  
-  @media (max-width: 768px) {
-    .yearly-calendar {
-      font-size: 12px;
-    }
-  }
+.month-name {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  background-color: rgba(211, 211, 211, 0.1);
+}
+
+.weekday-cell {
+  text-align: center;
+  padding: 5px;
+}
+
+.days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.day-cell {
+  text-align: center;
+  padding: 5px;
+}
+
+.today {
+  background-color: #d20400f1;
+}
+
+.empty-cell {
+  width: calc(100% / 7);
+}

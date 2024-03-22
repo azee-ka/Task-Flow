@@ -14,66 +14,36 @@ export function generateYearlyCalendar(date) {
   const months = monthNames.map((monthName, index) => {
     const monthDays = new Date(year, index + 1, 0).getDate();
     const firstDayOfWeek = new Date(year, index, 1).getDay();
-    const rows = [];
+    const days = [];
 
-    for (let i = 0; i < 6; i++) {
-      const cells = [];
-      for (let j = 0; j < 7; j++) {
-        const dayOfMonth = i * 7 + j - firstDayOfWeek + 1;
+    for (let i = 0; i < monthDays + firstDayOfWeek; i++) {
+      if (i < firstDayOfWeek) {
+        days.push(<div key={`empty-${i}`} className="empty-cell">&nbsp;</div>);
+      } else {
+        const dayOfMonth = i - firstDayOfWeek + 1;
         const currentDate = new Date(year, index, dayOfMonth);
         const isToday = currentDate.toDateString() === today.toDateString();
         const cellClassName = isToday ? 'today' : '';
-        if (dayOfMonth > 0 && dayOfMonth <= monthDays) {
-          cells.push(
-            <td key={`day-${dayOfMonth}`} className={cellClassName}>
-              {dayOfMonth}
-            </td>
-          );
-        } else {
-          cells.push(<td key={`empty-${i}-${j}`} className="empty-cell">&nbsp;</td>);
-        }
+        days.push(
+          <div key={`day-${dayOfMonth}`} className={`day-cell ${cellClassName}`}>
+            {dayOfMonth}
+          </div>
+        );
       }
-      rows.push(<tr key={`row-${i}`}>{cells}</tr>);
     }
 
     return (
-      <table key={monthName} className="yearly-month-table">
-        <thead>
-          <tr>
-            <th colSpan="7">{monthName}</th>
-          </tr>
-          <tr>
-            {weekdays.map((weekday, index) => (
-              <th key={`weekday-${weekday}-${index}`} className="weekday-cell">{weekday}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {rows}
-        </tbody>
-      </table>
+      <div key={monthName} className="month">
+        <div className="month-name">{monthName}</div>
+        <div className="weekdays">
+          {weekdays.map((weekday, index) => (
+            <div key={`weekday-${weekday}-${index}`} className="weekday-cell">{weekday}</div>
+          ))}
+        </div>
+        <div className="days">{days}</div>
+      </div>
     );
   });
 
-  const rows = [];
-  let cells = [];
-
-  months.forEach((month, index) => {
-    if (index % 4 !== 0) {
-      cells.push(<td key={`month-${index}`}>{month}</td>);
-    } else {
-      rows.push(<tr key={`row-${index / 4}`}>{cells}</tr>);
-      cells = [];
-      cells.push(<td key={`month--${index}`}>{month}</td>);
-    }
-    if (index === months.length - 1) {
-      rows.push(<tr key={`row--${index / 4 + 1}`}>{cells}</tr>);
-    }
-  });
-
-  return <table className="yearly-calendar">
-    <thead>
-      {rows}
-    </thead>
-  </table>;
+  return <div className="yearly-calendar">{months}</div>;
 }
