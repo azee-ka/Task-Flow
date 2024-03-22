@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './TaskList.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTh, faList, faSort } from '@fortawesome/free-solid-svg-icons';
+import { faTh, faList, faSort, faCheck } from '@fortawesome/free-solid-svg-icons';
 import API_BASE_URL from '../Authentication/utils/apiConfig';
 import GetConfig from '../Authentication/utils/config';
 import { useAuthState } from '../Authentication/utils/AuthProvider';
@@ -62,9 +62,9 @@ const TaskList = () => {
         setTaskFormIsOverlay(false);
         navigate('');
     };
-    
 
-    
+
+
 
     const updatePreferredView = async () => {
         try {
@@ -73,7 +73,7 @@ const TaskList = () => {
             console.error('Failed to update preferred view', error);
         }
     };
-    
+
 
     const toggleView = () => {
         setIsGridView((prev) => !prev);
@@ -123,15 +123,41 @@ const TaskList = () => {
                 </div>
                 {tasks.map(task => (
                     <div key={task.id} className={isGridView ? `task-card` : 'task-list'}>
-                        {task.created_at === task.updated_at && <p className='task-updated-at'>Last Updated {formatDate(task.created_at)}<br/>{timeAgo(task.created_at)}</p>}
-                        <h3 className="task-title">{task.title}</h3>
-                        <p className="task-description">{task.description.length <= 25 ? task.description : task.description.substr(0, 25) + '...'}</p>
-                        <p className="task-status">{task.started ? task.completed ? 'Completed' : 'Pending' : 'Not Started'}</p>
-                        <p className='task-created-at'>Created {formatDate(task.updated_at)}<br/>{timeAgo(task.updated_at)}</p>
+                        <div className='task-info-container'>
+                            {task.created_at === task.updated_at &&
+                                <p className='task-updated-at'>
+                                    Last Updated {formatDate(task.created_at)}<br />{timeAgo(task.created_at)}
+                                </p>
+                            }
+                            <h3 className="task-title">{task.title}</h3>
+                            <p className="task-description">{task.description.length <= 25 ? task.description : task.description.substr(0, 25) + '...'}</p>
+                            <p className='task-created-at'>Created {formatDate(task.updated_at)}<br />{timeAgo(task.updated_at)}</p>
+                        </div>
+                        <div className="task-status">
+                            {task.started ? (
+                                task.completed ? (
+                                    <div className="status-circle completed">
+                                        <FontAwesomeIcon icon={faCheck} className="check-icon" />
+                                    </div>
+                                ) : (
+                                    <div className="status-circle in-progress">
+                                        <div
+                                            className="progress"
+                                            style={{
+                                                transform: `rotate(${(50 / 100) * 360}deg)`,
+                                                borderLeftColor: 50 >= 50 ? '#007bff' : 'transparent',
+                                            }}
+                                        ></div>
+                                    </div>
+                                )
+                            ) : (
+                                <div className="status-circle not-started"></div>
+                            )}
+                        </div>
                     </div>
                 ))}
             </div>
-            {showTaskForm && <TaskForm onClose={handleCloseTaskForm} taskFormIsOverlay={taskFormIsOverlay} fetchTasks={fetchTasks}/>}
+            {showTaskForm && <TaskForm onClose={handleCloseTaskForm} taskFormIsOverlay={taskFormIsOverlay} fetchTasks={fetchTasks} />}
         </div>
     );
 };
