@@ -23,8 +23,6 @@
 .calendar-container-inner {
   float: right;
   width: 75%;
-  background-color: rgba(135, 159, 155, 0.054); 
-  box-shadow: 0 0 50px rgba(0, 223, 252, 0.09);
   padding: 30px !important;
   border-radius: 10px !important;
   border: 1px solid rgb(70, 70, 70);
@@ -32,16 +30,43 @@
   transform-style: preserve-3d;
   transition: all 0.6s ease-in-out;
   padding: 20px;
+  background-color: rgba(135, 159, 155, 0.054); 
   backdrop-filter: blur(100px);
   box-shadow: 0 4px 6px rgba(152, 152, 152, 0.1);
   border: 1px solid rgba(128, 128, 128, 0.077) !important;
 }
 
-.calendar-container-inner .calendar-header button {
-  background-color: #052023;
+
+.calendar-buttons button:hover {
+  background-color: #c5c5c549;
 }
-.calendar-header button:hover {
-  color: #c5c5c5;
+.calendar-buttons {
+  background-color: rgba(255, 0, 0, 0);
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+.calendar-buttons button {
+  background-color: rgba(140, 159, 156, 0.135); 
+  backdrop-filter: blur(100px);
+  border: 1px solid rgba(128, 128, 128, 0.077) !important;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.2rem;
+  justify-content: center;
+  align-content: center;
+  padding: 0.4em 0.8em;
+  transition: all 0.3s ease;
+  gap: 10px;
+}
+.calendar-buttons button:first-child {
+  border: 1px solid rgba(128, 128, 128, 0.077) !important;
+  border-radius: 8px;
+}
+.calendar-buttons button:last-child {
+  border: 1px solid rgba(128, 128, 128, 0.077) !important;
+  border-radius: 8px;
 }
 
 
@@ -59,38 +84,9 @@
 }
 
 
-.calendar-header button {
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  font-size: 1.2rem;
-  justify-content: center;
-  align-content: center;
-  padding: 0.4em 0.8em;
-  transition: all 0.3s ease;
-}
-
-
 
 .calendar {
   border-collapse: collapse;
-}
-
-.calendar td {
-  border: 0px solid #ccc;
-  padding: 5px;
-  text-align: center;
-}
-
-.calendar th {
-  border: 0px solid #ccc;
-  padding: 5px;
-  text-align: center;
-  font-weight: bold;
-}
-
-.calendar th:first-child {
-  text-align: left;
 }
 
 
@@ -128,7 +124,6 @@
 .calendar-nav a.active {
   color: #fff;
   border: 1px solid rgba(143, 143, 143, 0.616);
-  /* box-shadow: 0px 0px 4px 1px rgb(0, 255, 234); */
 }
 .calendar-nav a:hover {
   background-color: rgba(119, 119, 119, 0.289);
