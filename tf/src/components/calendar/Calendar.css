@@ -12,7 +12,7 @@
   width: 75%;
   background-color: rgba(15, 15, 15, 0.367);
   box-shadow: 0 0 50px rgba(0, 223, 252, 0.09);
-  padding: 10px 30px 30px 30px !important;
+  padding: 11px 30px 30px 30px !important;
   border-radius: 10px !important;
   border: 1px solid rgb(70, 70, 70) !important;
   min-height: 100%;
@@ -36,6 +36,7 @@
   align-items: center;
   border: 1px solid rgb(77, 77, 77);
   padding: 10px 20px;
+  border-radius: 8px;
 }
 
 .calendar-header h2 {
@@ -98,18 +99,19 @@
   justify-content: center;
   width: 15%;
   padding: 6px 10px;
+  border: 1px solid rgb(103, 103, 103, 0);
   border-bottom: 1px solid rgb(103, 103, 103);
   margin-bottom: 0.8%;
   margin-right: 0%;
   border-radius: 0px;
-  border-top: 0px solid white;
   color: #fff;
   text-decoration: none;
 }
 
 .calendar-nav a.active {
-  background-color: #083c42;
+  /* background-color: #27272798; */
   color: #fff;
+  box-shadow: 0px 0px 4px 1px rgb(100, 100, 100);
 }
 
 
@@ -124,7 +126,7 @@
   border-radius: 0px 5px 0px 5px;
 }
 
-.calendar-nav a:first-child:hover {
+.calendar-nav a:hover {
   border: 1px solid white;
 }
 
@@ -137,10 +139,6 @@
   border-radius: 0px 0px 0px 0px;
 }
 
-.calendar-nav a:nth-child(2):hover {
-  border: 1px solid white;
-}
-
 .calendar-nav a:last-child {
   border-right: 1px solid rgb(103, 103, 103);
   border-left: 1px solid rgb(103, 103, 103);
@@ -151,10 +149,6 @@
   border-right: 1px solid rgb(103, 103, 103);
   border-left: 1px solid rgb(103, 103, 103);
   border-radius: 5px 0px 5px 0px;
-}
-
-.calendar-nav a:last-child:hover {
-  border: 1px solid white;
 }
 
 

@@ -31,7 +31,7 @@ export function generateWeeklyCalendar(date) {
         );
       })}
       {[...Array(7)].map((_, i) => (
-        <div key={i + i} className="weekly-calendar-cell-content"></div>
+        <div key={i} className="weekly-calendar-cell-content"></div>
       ))}
     </div>
   );

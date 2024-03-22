@@ -1,12 +1,13 @@
 .yearly-calendar {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Adjust the number of columns as needed */
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px; /* Gap between months */
+  padding-top: 15px;
 }
 
 .month {
   padding: 10px;
-  border: 1px solid gray;
+  border: 1px solid rgba(128, 128, 128, 0.534);
   border-radius: 5px;
 }
 

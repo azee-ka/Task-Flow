@@ -6,6 +6,7 @@
     height: auto;
     width: 100%;
     color: white;
+    padding-top: 15px;
   }
   
   .calendar-cell-date {
@@ -18,6 +19,7 @@
     font-size: 20px;
     width: 100%;
     height: 100px;
+    
   }
   .calendar-cell-date div:nth-child(2) {
     /* position: relative;
@@ -56,3 +58,21 @@
     opacity: 0.6;
     background-color: rgba(255, 255, 255, 0);
   }
+
+
+
+
+.monthly-calendar-cell-day:first-child {
+  border-radius: 8px 0px 0px 0px;
+}
+.monthly-calendar-cell-day:nth-child(7) {
+  border-radius: 0px 8px 0px 0px;
+  
+}
+.calendar-cell-date:nth-last-child(7) {
+  border-radius: 0px 0px 0px 8px;
+}
+
+.calendar-cell-date:last-child {
+  border-radius: 0px 0px 8px 0px;
+}
