@@ -9,12 +9,16 @@ import { useAuthState } from '../Authentication/utils/AuthProvider';
 import TaskForm from '../TaskForm/TaskForm';
 import App from '../../App';
 import { formatDate, timeAgo } from '../../utils/formatDate';
+import { useNavigate } from 'react-router-dom';
 
 const TaskList = () => {
+    const navigate = useNavigate();
     const { token } = useAuthState();
     const config = GetConfig(token);
     const [isGridView, setIsGridView] = useState(true);
     const [showTaskForm, setShowTaskForm] = useState(false);
+    const [taskFormIsOverlay, setTaskFormIsOverlay] = useState(false);
+
     const [sortOption, setSortOption] = useState('created_at'); // Default sort by created_at
     const [tasks, setTasks] = useState([]);
     const [showDropdown, setShowDropdown] = useState(false); // State to control dropdown visibility
@@ -23,6 +27,8 @@ const TaskList = () => {
         try {
             const response = await axios.get(`${API_BASE_URL}/api/get-tasks/?sort_by=${sortOption}`, config);
             setTasks(response.data);
+
+            console.log('djhfs')
         } catch (error) {
             console.error('Failed to fetch tasks', error);
         }
@@ -46,32 +52,23 @@ const TaskList = () => {
         fetchPreferredView();
     }, []);
 
-    const handleCreateTaskSubmit = async (title, description, completed, started) => {
-        try {
-            const newTaskData = {
-                title: title,
-                description: description,
-                completed: completed,
-                started: started,
-            };
-            await axios.post(`${API_BASE_URL}/api/create-task/`, newTaskData, config);
-            fetchTasks(); // Refetch tasks after creating a new task
-        } catch (error) {
-            console.error('Failed to create task', error);
-        }
-    };
-
     const handleCreateTask = async () => {
         setShowTaskForm(true);
+        setTaskFormIsOverlay(true);
     };
 
     const handleCloseTaskForm = () => {
         setShowTaskForm(false);
+        setTaskFormIsOverlay(false);
+        navigate('');
     };
+    
+
+    
 
     const updatePreferredView = async () => {
         try {
-            const response = await axios.post(`${API_BASE_URL}/api/update-view-mode/?is_grid_view=${!isGridView}`, null, config);
+            await axios.post(`${API_BASE_URL}/api/update-view-mode/?is_grid_view=${!isGridView}`, null, config);
         } catch (error) {
             console.error('Failed to update preferred view', error);
         }
@@ -97,7 +94,6 @@ const TaskList = () => {
         }
     };
 
-    console.log(tasks);
     return (
         <div className="task-list-container" onClick={() => setShowDropdown(false)} >
             <div className='task-list-container-header'>
@@ -135,7 +131,7 @@ const TaskList = () => {
                     </div>
                 ))}
             </div>
-            {showTaskForm && <TaskForm onClose={handleCloseTaskForm} handleCreateTaskSubmit={handleCreateTaskSubmit} />}
+            {showTaskForm && <TaskForm onClose={handleCloseTaskForm} taskFormIsOverlay={taskFormIsOverlay} fetchTasks={fetchTasks}/>}
         </div>
     );
 };

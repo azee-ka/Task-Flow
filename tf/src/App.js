@@ -10,12 +10,14 @@ import TaskList from './components/TaskList/TaskList';
 import Dashboard from './components/Dashboard/Dashboard';
 import Profile from './components/Profile/Profile';
 import Calendar from './components/calendar/Calendar';
+import TaskForm from './components/TaskForm/TaskForm';
 
 const privateRoutes = [
   { path: '/dashboard', element: <Dashboard /> },
   { path: '/tasks', element: <TaskList /> },
   { path: '/calendar', element: <Calendar /> },
   { path: '/profile', element: <Profile /> },
+  { path: '/add-task', element: <TaskForm /> },
 ];
 
 const publicRoutes = [

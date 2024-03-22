@@ -53,6 +53,9 @@ function NavigationBar() {
                                 <Link to={item.path}>{item.label}</Link>
                             </li>
                         ))}
+                        {
+                            
+                        }
                         {isAuthenticated && (
                             <button onClick={handleLogout}>Sign Out</button>
                         )}
