@@ -9,10 +9,12 @@ import Register from './components/Authentication/Register/Register';
 import TaskList from './components/TaskList/TaskList';
 import Dashboard from './components/Dashboard/Dashboard';
 import Profile from './components/Profile/Profile';
+import Calendar from './components/calendar/Calendar';
 
 const privateRoutes = [
   { path: '/dashboard', element: <Dashboard /> },
   { path: '/tasks', element: <TaskList /> },
+  { path: '/calendar', element: <Calendar /> },
   { path: '/profile', element: <Profile /> },
 ];
 

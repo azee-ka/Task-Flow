@@ -1,6 +1,7 @@
 .sidebar-container {
     backdrop-filter: blur(100px) !important;
     background-color: rgba(31, 31, 31, 0.100);
+    background-color: rgba(16, 16, 16, 0.427);
     position: fixed;
     width: 280px;
     height: 100%;
@@ -21,13 +22,59 @@
 .sidebar-container-content {
     height: 90%;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .sidebar-container-content-inner {
+    background-color: rgba(0, 87, 128, 0);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.sidebar-menu {
+    background-color: rgba(163, 168, 38, 0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    align-self: center;
+    gap: 10px;
     height: 95%;
-    width: 95%;
-    background-color: rgba(0, 128, 0, 0);
+    width: 100%;
+}
+
+.sidebar-menu-item {
+    height: 40px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: right;
+    background-color: rgb(189, 34, 34, 0);
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+    font-size: 18px;
+}
+.sidebar-menu-item:hover {
+    background-color: rgba(50, 50, 50, 0.65);
+    cursor: pointer;
+}
+
+.sidebar-menu-item div {
+    height: 100%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: right;
+    text-align: right;
+    background-color: rgb(34, 189, 179, 0);
+    color: gray !important;
+}
+.sidebar-menu-item div a {
+    color: rgb(230, 230, 230) !important;
 }

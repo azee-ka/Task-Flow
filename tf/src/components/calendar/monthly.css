@@ -1,0 +1,52 @@
+.calendar-grid-monthly {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: 40px repeat(6, 1fr);
+    grid-gap: 0px;
+    margin-bottom: 0px;
+    height: auto;
+    width: 100%;
+    color: white;
+  }
+  
+  .calendar-cell-date {
+    display: block;
+    align-items: left;
+    border: 0.1px solid rgb(103, 103, 103);
+    font-size: 20px;
+    padding: 23% 10%;
+    position: relative;
+
+  }
+  
+  .calendar-cell-date:hover {
+    border: 0.5px solid white;
+    cursor: pointer;
+    color: white;
+  }
+  
+  .calendar-cell-date.previous-month div,
+  .calendar-cell-date.next-month div {
+    /*opacity: 0.5;*/
+    color: rgb(138, 138, 138);
+  }
+  
+  .monthly-calendar-cell-day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0.1px solid rgb(110, 110, 110);
+    font-size: 20px;
+    background-color: rgb(15, 15, 15);
+    height: 100%;
+    padding: 0%;
+  }
+  
+  .year-day-number {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 5px;
+    font-size: 12px;
+    opacity: 0.6;
+  }

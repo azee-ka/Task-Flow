@@ -31,6 +31,10 @@ function NavigationBar() {
         }, 500);
     };
 
+    const handleSidebarClose = () => {
+        setMenuOpen(false);
+    }
+
     return (
         <nav className="navigation-bar">
             <div className="navigation-bar-inner">
@@ -56,7 +60,7 @@ function NavigationBar() {
                 </div>
             </div>
             {isLoading && <div className="loading-bar"></div>}
-            {<Sidebar isOpen={menuOpen} />}
+            {<Sidebar isOpen={menuOpen} onClose={handleSidebarClose} />}
         </nav>
     );
 }
