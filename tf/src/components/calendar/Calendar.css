@@ -1,28 +1,44 @@
-.calendar-body {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  color: rgb(208, 208, 208);
-  background-color: rgba(255, 0, 0, 0);
+.calendar-container {
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  color: white;
 }
 
-.calendar-container {
+.calendar-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  color: rgb(208, 208, 208);
+  background-color: rgba(255, 0, 0, 0);
+  width: 100%;
+  height: 100%;
+}
+
+.calendar-container-inner {
   float: right;
   width: 75%;
-  background-color: rgba(15, 15, 15, 0.367);
+  background-color: rgba(135, 159, 155, 0.054); 
   box-shadow: 0 0 50px rgba(0, 223, 252, 0.09);
   padding: 11px 30px 30px 30px !important;
   border-radius: 10px !important;
-  border: 1px solid rgb(70, 70, 70) !important;
+  border: 1px solid rgb(70, 70, 70);
   min-height: 100%;
   height: auto;
   transform-style: preserve-3d;
   transition: all 0.6s ease-in-out;
-  margin-bottom: 15px;
+  padding: 20px;
+  backdrop-filter: blur(100px);
+  box-shadow: 0 4px 6px rgba(152, 152, 152, 0.1);
+  border: 1px solid rgba(128, 128, 128, 0.077) !important;
 }
 
-.calendar-container .calendar-header button {
+.calendar-container-inner .calendar-header button {
   background-color: #052023;
 }
 .calendar-header button:hover {
@@ -79,7 +95,7 @@
 }
 
 
-.calendar-container {
+.calendar-container-inner {
   border: 1px solid rgb(103, 103, 103);
   border-radius: 4px;
   margin-top: 20px;
@@ -87,68 +103,36 @@
 }
 
 .calendar-nav {
+  display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  margin-top: -1.1%;
   align-items: center;
   text-align: center;
+  gap: 10px;
+  padding: 5px 5px;
+  background-color: rgba(192, 192, 192, 0.135);
+  border-radius: 13px;
 }
 
 .calendar-nav a {
   display: inline-block;
   text-align: center;
   justify-content: center;
-  width: 15%;
   padding: 6px 10px;
   border: 1px solid rgb(103, 103, 103, 0);
-  border-bottom: 1px solid rgb(103, 103, 103);
-  margin-bottom: 0.8%;
-  margin-right: 0%;
-  border-radius: 0px;
+  border-radius: 7px;
   color: #fff;
   text-decoration: none;
+  transition: background-color 0.3s ease;
 }
 
 .calendar-nav a.active {
-  /* background-color: #27272798; */
   color: #fff;
-  box-shadow: 0px 0px 4px 1px rgb(100, 100, 100);
+  box-shadow: 0px 0px 4px 1px rgb(0, 255, 234);
 }
-
-
-.calendar-nav a:first-child {
-  border-left: 1px solid rgb(103, 103, 103);
-  border-right: 1px solid rgb(103, 103, 103);
-  border-radius: 0px 0px 0px 5px;
-}
-
-.calendar-nav a:first-child.active {
-  border-left: 1px solid rgb(103, 103, 103);
-  border-radius: 0px 5px 0px 5px;
-}
-
 .calendar-nav a:hover {
-  border: 1px solid white;
-}
-
-.calendar-nav a:nth-child(2) {
-  border-right: 0px solid rgb(103, 103, 103);
-}
-
-.calendar-nav a:nth-child(2).active {
-  border-right: 0px solid rgb(103, 103, 103);
-  border-radius: 0px 0px 0px 0px;
-}
-
-.calendar-nav a:last-child {
-  border-right: 1px solid rgb(103, 103, 103);
-  border-left: 1px solid rgb(103, 103, 103);
-  border-radius: 0px 0px 5px 0px;
-}
-
-.calendar-nav a:last-child.active {
-  border-right: 1px solid rgb(103, 103, 103);
-  border-left: 1px solid rgb(103, 103, 103);
-  border-radius: 5px 0px 5px 0px;
+  background-color: rgba(119, 119, 119, 0.674);
+  cursor: pointer;
 }
 
 
