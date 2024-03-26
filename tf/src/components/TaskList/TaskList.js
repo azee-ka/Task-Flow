@@ -13,6 +13,10 @@ import { useNavigate } from 'react-router-dom';
 
 const TaskList = () => {
     const navigate = useNavigate();
+
+    const [hoveredTaskId, setHoveredTaskId] = useState(null);
+    const [tooltipPosition, setTooltipPosition] = useState({ top: 0, left: 0 });
+
     const { token } = useAuthState();
     const config = GetConfig(token);
     const [isGridView, setIsGridView] = useState(true);
@@ -94,6 +98,32 @@ const TaskList = () => {
         }
     };
 
+    // const handleMouseEnter = (event, taskId) => {
+    //     const cardRect = event.target.getBoundingClientRect();
+    //     const tooltipWidth = 450;
+    //     const tooltipHeight = 300;
+    //     const viewportWidth = window.innerWidth;
+    //     const viewportHeight = window.innerHeight;
+
+    //     let left = cardRect.left + window.scrollX + cardRect.width / 2 - tooltipWidth / 2;
+    //     let top = cardRect.bottom + window.scrollY + 10;
+
+    //     // Adjust tooltip position if it goes out of bounds to the right
+    //     if (left + tooltipWidth > viewportWidth) {
+    //         left = viewportWidth - tooltipWidth - 10; // Shift to the left of the card
+    //     }
+
+    //     // Adjust tooltip position if it goes out of bounds to the bottom
+    //     if (top + tooltipHeight > viewportHeight) {
+    //         top = cardRect.top - tooltipHeight - 10; // Place above the card
+    //     }
+
+    //     setTooltipPosition({ top, left });
+    //     setHoveredTaskId(taskId);
+    // };
+
+
+
     return (
         <div className="task-list-container" onClick={() => setShowDropdown(false)} >
             <div className='task-list-container-header'>
@@ -122,7 +152,12 @@ const TaskList = () => {
                     <button onClick={handleCreateTask}>Create Task</button>
                 </div>
                 {tasks.map(task => (
-                    <div key={task.id} className={isGridView ? `task-card` : 'task-list'}>
+                    <div
+                        key={task.id}
+                        className={isGridView ? `task-card` : 'task-list'}
+                        onMouseEnter={() => setHoveredTaskId(task.id)}
+                        onMouseLeave={() => setHoveredTaskId(null)}
+                    >
                         <div className='task-info-container'>
                             {task.created_at === task.updated_at &&
                                 <p className='task-updated-at'>
@@ -154,6 +189,12 @@ const TaskList = () => {
                                 <div className="status-circle not-started"></div>
                             )}
                         </div>
+                        {isGridView && hoveredTaskId === task.id && (
+                            <div className="task-tooltip">
+                                <p>{task.title}</p>
+                                <p>{task.description}</p>
+                            </div>
+                        )}
                     </div>
                 ))}
             </div>

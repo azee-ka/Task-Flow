@@ -85,7 +85,6 @@
 }
 
 .task-list-content .task-card {
-    /* background-color: rgba(11, 159, 146, 0.111);  */
     background-color: rgba(135, 159, 155, 0.095);
     border-radius: 10px;
     padding: 20px;
@@ -98,6 +97,7 @@
     backdrop-filter: blur(100px);
     border: 1px solid rgba(128, 128, 128, 0.077);
     z-index: 0 !important;
+    position: relative;
 }
 
 .task-list-content .task-card:hover {
@@ -291,4 +291,32 @@
     border-radius: 50%;
     clip: rect(0, 100px, 100px, 50px);
     border-left-color: #007bff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.task-tooltip {
+    position: absolute;
+    background-color: #2a2a2a5d;
+    backdrop-filter: blur(200px);
+    border: 1px solid rgba(128, 128, 128, 0.077);
+    border-radius: 8px;
+    padding: 5px 10px;
+    z-index: 1000;
+    width: 450px;
+    height: 300px;
+    overflow-y: auto;
+    top: 105%;
+    left: 50%;
 }
