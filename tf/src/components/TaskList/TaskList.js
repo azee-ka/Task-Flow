@@ -51,7 +51,7 @@ const TaskList = () => {
             } catch (error) {
                 console.error('Failed to fetch preferred view', error);
             }
-        };
+        }; 
 
         fetchPreferredView();
     }, []);
