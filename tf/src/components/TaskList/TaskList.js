@@ -50,7 +50,7 @@ const TaskList = () => {
                 setIsGridView(response.data.is_grid_view);
             } catch (error) {
                 console.error('Failed to fetch preferred view', error);
-            }
+            }  
         }; 
 
         fetchPreferredView();
